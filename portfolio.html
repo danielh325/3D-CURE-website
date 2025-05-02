@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eunchan Hwang - Portfolio Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap');
+        
+        /* Healthcare color palette */
+        :root {
+            --primary: #2AB6B0;       /* Teal - main brand color */
+            --primary-light: #5ECCC7; /* Light teal */
+            --primary-dark: #1A8F8A;  /* Dark teal */
+            --secondary: #3A7BD5;     /* Medical blue */
+            --accent: #42B883;        /* Healing green */
+            --text-dark: #2D3748;     /* Dark blue-gray */
+            --text-light: #718096;    /* Medium gray */
+            --bg-white: #FFFFFF;      /* White */
+            --bg-light: #F7FAFC;      /* Very light blue-gray */
+            --bg-gray: #EDF2F7;       /* Light blue-gray */
+            --border: #E2E8F0;        /* Light gray */
+            --error: #E53E3E;         /* Red */
+            --success: #48BB78;       /* Green */
+        }
+        
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg-white);
+            line-height: 1.5;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 0.5rem;
+        }
+        
+        p {
+            margin-bottom: 1rem;
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary);
+            transition: color 0.2s ease;
+        }
+        
+        a:hover {
+            color: var(--primary-dark);
+        }
+        
+        .container1 {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Portfolio section styles */
+        .portfolio_section1 {
+            padding: 2rem 0;
+        }
+        
+        .portfolio_card1 {
+            background-color: var(--bg-white);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .portfolio_card1:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .portfolio_grid1 {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Left column styles */
+        .left_column1 {
+            background: linear-gradient(135deg, rgba(42, 182, 176, 0.15), rgba(66, 184, 131, 0.1));
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile_image_container1 {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+        
+        .profile_image1 {
+            width: 12rem;
+            height: 12rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid white;
+            box-shadow: 0 8px 16px rgba(42, 182, 176, 0.2);
+            margin: 0 auto;
+        }
+        
+        .profile_image1 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .social_icons1 {
+            position: absolute;
+            bottom: -0.5rem;
+            right: -0.5rem;
+            display: flex;
+            gap: 0.5rem;
+        }
+        
+        .social_icon1 {
+            background-color: white;
+            color: var(--primary);
+            padding: 0.5rem;
+            border-radius: 50%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+        }
+        
+        .social_icon1:hover {
+            transform: translateY(-3px);
+            color: var(--primary-dark);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .name_title1 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        
+        .name1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.25rem;
+        }
+        
+        .title1 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact_buttons1 {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .contact_btn1 {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+        }
+        
+        .primary_btn1 {
+            background-color: var(--primary);
+            color: white;
+            box-shadow: 0 4px 6px rgba(42, 182, 176, 0.25);
+        }
+        
+        .primary_btn1:hover {
+            background-color: var(--primary-dark);
+            color: white;
+            box-shadow: 0 6px 8px rgba(42, 182, 176, 0.35);
+        }
+        
+        .secondary_btn1 {
+            background-color: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-light);
+        }
+        
+        .secondary_btn1:hover {
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+        
+        .btn_icon1 {
+            margin-right: 0.5rem;
+        }
+        
+        /* Right column styles */
+        .right_column1 {
+            padding: 1.5rem;
+        }
+        
+        .badge1 {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.025em;
+            background-color: rgba(42, 182, 176, 0.1);
+            color: var(--primary);
+            margin-bottom: 0.75rem;
+        }
+        
+        .section_title1 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.75rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .section_title1::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 3rem;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 1px;
+        }
+        
+        .bio1 {
+            color: var(--text-light);
+            line-height: 1.625;
+            margin-bottom: 1.5rem;
+        }
+        
+        .focus_grid1 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .focus_item1 {
+            background-color: var(--bg-light);
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .focus_item1:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        
+        .focus_icon1 {
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            background-color: rgba(42, 182, 176, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+        
+        .focus_label1 {
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        
+        .skills_container1 {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill_badge1 {
+            transition: all 0.2s ease;
+            background-color: rgba(42, 182, 176, 0.1);
+            color: var(--primary);
+            padding: 0.25rem 0.75rem;
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            font-weight: 500;
+            display: inline-block;
+            border: 1px solid rgba(42, 182, 176, 0.2);
+        }
+        
+        .skill_badge1:hover {
+            transform: translateY(-2px);
+            background-color: rgba(42, 182, 176, 0.15);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .border_top1 {
+            border-top: 1px solid var(--border);
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+        }
+        
+        .research_card1 {
+            background-color: var(--bg-light);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .research_title1 {
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .research_desc1 {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        /* Responsive styles */
+        @media (min-width: 768px) {
+            .portfolio_grid1 {
+                flex-direction: row;
+            }
+            
+            .left_column1 {
+                width: 33.333333%;
+            }
+            
+            .right_column1 {
+                width: 66.666667%;
+                padding: 2rem;
+            }
+            
+            .focus_grid1 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Portfolio Section -->
+    <section class="portfolio_section1">
+        <div class="container1">
+            <div class="portfolio_card1">
+                <div class="portfolio_grid1">
+                    <!-- Left Column - Photo and Basic Info -->
+                    <div class="left_column1">
+                        <div class="profile_image_container1">
+                            <div class="profile_image1">
+                                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiM5OTkiLz48cGF0aCBkPSJNMTcwIDMwMEMxNzAgMjQ3LjcgMjA2LjMgMjIwIDI1MCAyMjBDMjkzLjcgMjIwIDMzMCAyNDcuNyAzMzAgMzAwVjM1MEgxNzBWMzAwWiIgZmlsbD0iIzk5OSIvPjwvc3ZnPg==" alt="Eunchan Hwang">
+                            </div>
+                            <div class="social_icons1">
+                                <a href="#" class="social_icon1">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social_icon1">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="name_title1">
+                            <h1 class="name1">Eunchan Hwang</h1>
+                            <h2 class="title1">Student Researcher</h2>
+                        </div>
+                        <div class="contact_buttons1">
+                            <a href="mailto:eunchan@example.com" class="contact_btn1 primary_btn1">
+                                <i class="btn_icon1 far fa-envelope"></i>
+                                Contact
+                            </a>
+                            <a href="#" class="contact_btn1 secondary_btn1">
+                                <i class="btn_icon1 far fa-file-pdf"></i>
+                                CV
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Right Column - Bio, Skills, Expertise -->
+                    <div class="right_column1">
+                        <div>
+                            <span class="badge1">Bioengineering Specialist</span>
+                            <h3 class="section_title1">About Me</h3>
+                            <p class="bio1">
+                                Student Researcher in Biotechnology & Data Science | Bioengineer @CURE, CHi, E-NABLE, MCM Hospital, MeQrez Hospital, 3D Printing Technician
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="section_title1">Research Focus</h3>
+                            <div class="focus_grid1">
+                                <div class="focus_item1">
+                                    <div class="focus_icon1">
+                                        <i class="fas fa-dna"></i>
+                                    </div>
+                                    <h4 class="focus_label1">Biotechnology</h4>
+                                </div>
+                                <div class="focus_item1">
+                                    <div class="focus_icon1">
+                                        <i class="fas fa-laptop-code"></i>
+                                    </div>
+                                    <h4 class="focus_label1">Data Science</h4>
+                                </div>
+                                <div class="focus_item1">
+                                    <div class="focus_icon1">
+                                        <i class="fas fa-microscope"></i>
+                                    </div>
+                                    <h4 class="focus_label1">Research</h4>
+                                </div>
+                                <div class="focus_item1">
+                                    <div class="focus_icon1">
+                                        <i class="fas fa-cube"></i>
+                                    </div>
+                                    <h4 class="focus_label1">3D Printing</h4>
+                                </div>
+                                <div class="focus_item1">
+                                    <div class="focus_icon1">
+                                        <i class="fas fa-hospital-user"></i>
+                                    </div>
+                                    <h4 class="focus_label1">Healthcare</h4>
+                                </div>
+                                <div class="focus_item1">
+                                    <div class="focus_icon1">
+                                        <i class="fas fa-drafting-compass"></i>
+                                    </div>
+                                    <h4 class="focus_label1">Prototyping</h4>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="section_title1">Expertise & Skills</h3>
+                            <div class="skills_container1">
+                                <span class="skill_badge1">Bioengineering</span>
+                                <span class="skill_badge1">Data Analysis</span>
+                                <span class="skill_badge1">ML Algorithms</span>
+                                <span class="skill_badge1">Python</span>
+                                <span class="skill_badge1">R</span>
+                                <span class="skill_badge1">CAD Design</span>
+                                <span class="skill_badge1">Medical Devices</span>
+                                <span class="skill_badge1">3D Bioprinting</span>
+                                <span class="skill_badge1">Tissue Engineering</span>
+                                <span class="skill_badge1">PCR</span>
+                            </div>
+                        </div>
+
+                        <div class="border_top1">
+                            <h3 class="section_title1">Current Research</h3>
+                            <div class="research_card1">
+                                <h4 class="research_title1">Bioprinting with Embedded Sensors</h4>
+                                <p class="research_desc1">Developing innovative methods to incorporate micro-sensors within bioprinted tissues for real-time monitoring of physiological parameters, with applications in personalized medicine and drug testing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

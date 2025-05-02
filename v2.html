@@ -1,0 +1,1232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D CURE - Affordable 3D-Printed Prosthetics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #c1272d;
+            --secondary: #333333;
+            --accent: #4CAF50;
+            --dark: #222222;
+            --light: #f5f5f5;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            height: calc(100vh - 80px);
+            background: linear-gradient(135deg, rgba(193, 39, 45, 0.05) 0%, rgba(34, 34, 34, 0.05) 100%);
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+        }
+        
+        .hero-text {
+            flex: 1;
+        }
+        
+        .hero-text h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            line-height: 1.2;
+            font-weight: 800;
+        }
+        
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(193, 39, 45, 0.3);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(193, 39, 45, 0.4);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+            margin-left: 15px;
+            box-shadow: 0 4px 15px rgba(51, 51, 51, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            box-shadow: 0 6px 20px rgba(51, 51, 51, 0.4);
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* About Section */
+        .section {
+            padding: 100px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .section-header h2:after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .about-text p {
+            margin-bottom: 15px;
+        }
+        
+        .about-image {
+            flex: 1;
+        }
+        
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Features */
+        .features {
+            background-color: #f9f9f9;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(193, 39, 45, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--primary);
+        }
+        
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        /* Process */
+        .process-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            position: relative;
+        }
+        
+        .process-steps:before {
+            content: '';
+            position: absolute;
+            width: 80%;
+            height: 3px;
+            background-color: #e0e0e0;
+            top: 60px;
+            left: 10%;
+            z-index: -1;
+        }
+        
+        .step {
+            text-align: center;
+            width: 30%;
+            position: relative;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin: 0 auto 20px;
+            z-index: 1;
+            position: relative;
+        }
+        
+        .step:nth-child(2) .step-number {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .step:nth-child(3) .step-number {
+            background-color: var(--accent);
+        }
+        
+        .step h3 {
+            margin-bottom: 15px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .process-images {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            gap: 20px;
+        }
+        
+        .process-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .process-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .process-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Team */
+        .team {
+            background-color: #f9f9f9;
+        }
+        
+        .team-member {
+            text-align: center;
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+        
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .team-photo {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+        
+        .team-info {
+            padding: 20px;
+        }
+        
+        .team-info h3 {
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .team-role {
+            color: var(--primary);
+            font-weight: 500;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .team-bio {
+            margin-bottom: 20px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+        }
+        
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: #555;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover svg {
+            fill: white;
+        }
+        
+        /* Partners */
+        .partners-slider {
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            height: 100px;
+        }
+        
+        .slider-track {
+            display: flex;
+            animation: scroll 30s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+        
+        .partner {
+            min-width: 200px;
+            height: 80px;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .partner img {
+            max-width: 100%;
+            max-height: 60px;
+            filter: grayscale(100%);
+            opacity: 0.6;
+            transition: var(--transition);
+        }
+        
+        .partner:hover img {
+            filter: grayscale(0);
+            opacity: 1;
+        }
+        
+        /* Contact */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(193, 39, 45, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        .contact-icon svg {
+            width: 25px;
+            height: 25px;
+            fill: var(--primary);
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: var(--transition);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(193, 39, 45, 0.1);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .form-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: 0 4px 15px rgba(193, 39, 45, 0.3);
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .form-btn:hover {
+            background-color: #a51d23;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(193, 39, 45, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo {
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+        
+        .footer-about p {
+            margin-bottom: 20px;
+            color: #ccc;
+            line-height: 1.8;
+        }
+        
+        .footer-heading {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            padding-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .footer-heading:after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-contact li {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+        
+        .footer-contact svg {
+            width: 18px;
+            height: 18px;
+            fill: var(--primary);
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+            }
+            
+            .hero-text, .hero-image {
+                flex: none;
+                width: 100%;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-text, .about-image {
+                flex: none;
+                width: 100%;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .process-steps:before {
+                display: none;
+            }
+            
+            .process-steps {
+                flex-direction: column;
+                align-items: center;
+                gap: 30px;
+            }
+            
+            .step {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .process-images {
+                flex-direction: column;
+            }
+        }
+
+        /* Dark mode support */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --light: #222;
+                --dark: #f5f5f5;
+            }
+            
+            body {
+                background-color: #222;
+                color: #f5f5f5;
+            }
+            
+            header {
+                background-color: #333;
+            }
+            
+            .feature-card, .contact-form, .team-member {
+                background-color: #333;
+            }
+            
+            .features, .team {
+                background-color: #2a2a2a;
+            }
+            
+            .form-control {
+                background-color: #444;
+                border-color: #555;
+                color: #fff;
+            }
+            
+            .nav-links a {
+                color: #f5f5f5;
+            }
+            
+            footer {
+                background-color: #111;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="https://pfst.cf2.poecdn.net/base/image/a8b9242659fdeac9558986bc1117c2eff8290d46fbba18654bfada70677ad10d?w=748&h=226" alt="3D CURE - TECH IN HEALTH">
+                </div>
+                
+                <div class="nav-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#features">Features</a>
+                    <a href="#process">Process</a>
+                    <a href="#team">Team</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                
+                <div class="mobile-menu">
+                    <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 18v1h-24v-1h24zm0-6v1h-24v-1h24zm0-6v1h-24v-1h24z" fill="#c1272d"/></svg>
+                </div>
+            </nav>
+        </div>
+    </header>
+    
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Affordable 3D-Printed Prosthetics for Orthopedic Care</h1>
+                    <p>We create custom-fitted orthoses and prosthetics using advanced 3D printing technology, making orthopedic care accessible and affordable in Ethiopia and beyond.</p>
+                    <a href="#contact" class="btn">Contact Us</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+                <div class="hero-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPjxwYXRoIGQ9Ik0xNTAgMTUwSDM1MFYzNTBIMTUwVjE1MFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMTkwIDE5MEgzMTBWMzEwSDE5MFYxOTBaIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTIwMCAyMDBIMzAwVjMwMEgyMDBWMjAwWiIgZmlsbD0iIzMzMzMzMyIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjI1MCIgcj0iMzAiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" alt="3D CURE Prosthetics">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About 3D CURE</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Our Mission: Bridging Gaps with Innovation</h3>
+                    <p>3D CURE is dedicated to bridging the gap in orthopedic care in Ethiopia and beyond through innovative 3D printing technology. We create externally applied devices that are custom fitted to each patient's injured body parts, providing support and stabilization while ensuring comfort and freedom.</p>
+                    <p>In Ethiopia, where there are only about 600 orthopedic surgeons for a population of 100 million, proper orthopedic care is often inaccessible. Our goal is to employ 3D printing technology in the orthopedic medical field, innovating traditional casts and prosthetics to make healthcare more affordable and accessible.</p>
+                    <p>Starting from Ethiopia, we aim to expand across Africa, producing high-quality, affordable orthopedic solutions that improve patients' lives.</p>
+                </div>
+                <div class="about-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPjxwYXRoIGQ9Ik0yMDAgMTAwSDMwMFY0MDBIMjAwVjEwMFoiIGZpbGw9IiMzMzMzMzMiLz48cGF0aCBkPSJNMjI1IDEyNUgyNzVWMzc1SDIyNVYxMjVaIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTIyMCAxNTBIMjMwVjE2MEgyMjBWMTUwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMTUwSDI1MFYxNjBIMjQwVjE1MFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDE1MEgyNzBWMTYwSDI2MFYxNTBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAxNzBIMjMwVjE4MEgyMjBWMTcwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMTcwSDI1MFYxODBIMjQwVjE3MFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDE3MEgyNzBWMTgwSDI2MFYxNzBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAxOTBIMjMwVjIwMEgyMjBWMTkwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMTkwSDI1MFYyMDBIMjQwVjE5MFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDE5MEgyNzBWMjAwSDI2MFYxOTBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAyMTBIMjMwVjIyMEgyMjBWMjEwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMjEwSDI1MFYyMjBIMjQwVjIxMFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDIxMEgyNzBWMjIwSDI2MFYyMTBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAyMzBIMjMwVjI0MEgyMjBWMjMwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMjMwSDI1MFYyNDBIMjQwVjIzMFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDIzMEgyNzBWMjQwSDI2MFYyMzBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAyNTBIMjMwVjI2MEgyMjBWMjUwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMjUwSDI1MFYyNjBIMjQwVjI1MFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDI1MEgyNzBWMjYwSDI2MFYyNTBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAyNzBIMjMwVjI4MEgyMjBWMjcwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMjcwSDI1MFYyODBIMjQwVjI3MFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDI3MEgyNzBWMjgwSDI2MFYyNzBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAyOTBIMjMwVjMwMEgyMjBWMjkwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMjkwSDI1MFYzMDBIMjQwVjI5MFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDI5MEgyNzBWMzAwSDI2MFYyOTBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAzMTBIMjMwVjMyMEgyMjBWMzEwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMzEwSDI1MFYzMjBIMjQwVjMxMFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDMxMEgyNzBWMzIwSDI2MFYzMTBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAzMzBIMjMwVjM0MEgyMjBWMzMwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMzMwSDI1MFYzNDBIMjQwVjMzMFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDMzMEgyNzBWMzQwSDI2MFYzMzBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTIyMCAzNTBIMjMwVjM2MEgyMjBWMzUwWiIgZmlsbD0iI2MxMjcyZCIvPjxwYXRoIGQ9Ik0yNDAgMzUwSDI1MFYzNjBIMjQwVjM1MFoiIGZpbGw9IiNjMTI3MmQiLz48cGF0aCBkPSJNMjYwIDM1MEgyNzBWMzYwSDI2MFYzNTBaIiBmaWxsPSIjYzEyNzJkIi8+PC9zdmc+" alt="3D printed orthosis">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Features & Benefits</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Lightweight Design</h3>
+                    <p>Our 3D-printed orthoses are significantly lighter than traditional casts, allowing patients to maintain their daily activities with minimal discomfort.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Waterproof</h3>
+                    <p>Unlike traditional plaster casts, our orthoses are waterproof, allowing patients to shower, swim, and maintain their hygiene without concerns.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Breathability</h3>
+                    <p>The perforated, honeycomb design allows for air circulation, preventing skin maceration and reducing the risk of cutaneous infections.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Custom Fitted</h3>
+                    <p>Each orthosis is precisely mapped to the contours of the patient's body using 3D scanning technology, ensuring optimal support and comfort.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Hygienic</h3>
+                    <p>The design prevents itchiness and odor associated with traditional casts, improving patient comfort and compliance with treatment.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Medical Examination Friendly</h3>
+                    <p>Our orthoses facilitate easier medical examinations and monitoring of the healing process, as they can be temporarily removed when necessary.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section process" id="process">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Process</h2>
+            </div>
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>3D Scanning</h3>
+                    <p>We scan the patient's injured body part to create an accurate digital model, mapping every contour for a perfect fit.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Design & Print</h3>
+                    <p>Our engineers design a custom orthosis tailored to the patient's specific needs, which is then 3D printed using biocompatible materials.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Delivery & Support</h3>
+                    <p>The finished orthosis is fitted to the patient, ensuring comfort and functionality, with follow-up support throughout the treatment.</p>
+                </div>
+            </div>
+            <div class="process-images">
+                <div class="process-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNTAwIDMwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPjxwYXRoIGQ9Ik05MCAxNTBIMjUwVjI1MEg5MFYxNTBaIiBmaWxsPSIjYzEyNzJkIi8+PHBhdGggZD0iTTI1MCAxNTBINDEwVjI1MEgyNTBWMTUwWiIgZmlsbD0iIzMzMzMzMyIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjEwMCIgcj0iMjAiIGZpbGw9IiMzMzMzMzMiLz48Y2lyY2xlIGN4PSIxNTAiIGN5PSIxMDAiIHI9IjE1IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTUwIiBjeT0iMTAwIiByPSIxMCIgZmlsbD0iIzMzMzMzMyIvPjxjaXJjbGUgY3g9IjE1MCIgY3k9IjEwMCIgcj0iNSIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0yMDAgNTBIMzAwVjExMEgyMDBWNTBaIiBmaWxsPSIjMzMzMzMzIi8+PHBhdGggZD0iTTIwMCA2MEgzMDBWNzBIMjAwVjYwWiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0yMDAgODBIMzAwVjkwSDIwMFY4MFoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMjAwIDEwMEgzMDBWMTEwSDIwMFYxMDBaIiBmaWxsPSIjZmZmIi8+PC9zdmc+" alt="3D Scanning Process">
+                </div>
+                <div class="process-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNTAwIDMwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPjxwYXRoIGQ9Ik0xNTAgNTBIMzUwVjI1MEgxNTBWNTBaIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTE3NSA3NUgzMjVWMjI1SDE3NVY3NVoiIGZpbGw9IiMzMzMzMzMiLz48cGF0aCBkPSJNMjUwIDE1MFYyMjUiIHN0cm9rZT0iI2ZmZiIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxwYXRoIGQ9Ik0yMDAgMTUwVjIyNSIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEwIi8+PHBhdGggZD0iTTMwMCAxNTBWMjI1IiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMTAiLz48cGF0aCBkPSJNMjUwIDc1VjE1MCIgc3Ryb2tlPSIjYzEyNzJkIiBzdHJva2Utd2lkdGg9IjEwIi8+PC9zdmc+" alt="3D Printing Process">
+                </div>
+                <div class="process-image">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iMzAwIiB2aWV3Qm94PSIwIDAgNTAwIDMwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPjxwYXRoIGQ9Ik0xNTAgMTAwSDM1MFYyMDBIMTUwVjEwMFoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMTc1IDEyNUgzMjVWMTc1SDE3NVYxMjVaIiBmaWxsPSIjMzMzMzMzIi8+PHBhdGggZD0iTTE4MCAxMzBIMTkwVjE0MEgxODBWMTMwWiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0xODAgMTYwSDE5MFYxNzBIMTgwVjE2MFoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMjEwIDEzMEgyMjBWMTQwSDIxMFYxMzBaIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTIxMCAxNjBIMjIwVjE3MEgyMTBWMTYwWiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0yNDAgMTMwSDI1MFYxNDBIMjQwVjEzMFoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMjQwIDE2MEgyNTBWMTcwSDI0MFYxNjBaIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTI3MCAxMzBIMjgwVjE0MEgyNzBWMTMwWiIgZmlsbD0iI2ZmZiIvPjxwYXRoIGQ9Ik0yNzAgMTYwSDI4MFYxNzBIMjcwVjE2MFoiIGZpbGw9IiNmZmYiLz48cGF0aCBkPSJNMzAwIDEzMEgzMTBWMTQwSDMwMFYxMzBaIiBmaWxsPSIjZmZmIi8+PHBhdGggZD0iTTMwMCAxNjBIMzEwVjE3MEgzMDBWMTYwWiIgZmlsbD0iI2ZmZiIvPjwvc3ZnPg==" alt="Delivery Process">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section applications">
+        <div class="container">
+            <div class="section-header">
+                <h2>Medical Applications</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Bone Fractures</h3>
+                    <p>Our orthoses are ideal for upper and lower limb fractures, including clavicle, humerus, and femur bones.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Ligament/Tendon Injuries</h3>
+                    <p>Provides stabilization and support for injured ligaments and tendons during the healing process.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Post-Surgical Immobilization</h3>
+                    <p>Ensures proper immobilization and protection of the operated area during recovery.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Nerve Injuries</h3>
+                    <p>Specialized designs for patients with Brachial Plexus Palsy, Facial Palsy, and other nerve-related conditions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Pediatric Applications</h3>
+                    <p>Specialized solutions for children with birth injuries, cerebral palsy, clubfoot, and scoliosis.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+                    </div>
+                    <h3>Neurological Conditions</h3>
+                    <p>Supportive devices for patients recovering from stroke and spinal cord injuries.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section team" id="team">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Team</h2>
+            </div>
+            <div class="features-grid">
+                <div class="team-member">
+                    <img class="team-photo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MDAiIGhlaWdodD0iNTAwIiB2aWV3Qm94PSIwIDAgNTAwIDUwMCI+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0iI2YwZjBmMCIvPjxjaXJjbGUgY3g9IjI1MCIgY3k9IjE1MCIgcj0iODAiIGZpbGw9IiM5OTkiLz48cGF0aCBkPSJNMTcwIDMwMEMxNzAgMjQ3LjcgMjA2LjMgMjIwIDI1MCAyMjBDMjkzLjcgMjIwIDMzMCAyNDcuNyAzMzAgMzAwVjM1MEgxNzBWMzAwWiIgZmlsbD0iIzk5OSIvPjwvc3ZnPg==" alt="Team Member - Researcher">
+                    <div class="team-info">
+                        <h3>Team Member</h3>
+                        <span class="team-role">Student Researcher</span>
+                        <p class="team-bio">Student Researcher in Biotechnology & Data Science | Bioengineer @CURE, CHi, E-NABLE, MCM Hospital, MeQrez Hospital, 3D Printing Technician</p>
+                        <div class="social-links">
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                            </a>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                            </a>
+                            <a href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section partners">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Partners</h2>
+            </div>
+            <div class="partners-slider">
+                <div class="slider-track">
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U3QuIFBhdWwgSG9zcGl0YWw8L3RleHQ+PC9zdmc+" alt="Saint Paul Hospital">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiNjMTI3MmQiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWVRcmV6IEhvc3BpdGFsPC90ZXh0Pjwvc3ZnPg==" alt="MeQrez Hospital">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q1VSRSBJbnRlcm5hdGlvbmFsPC90ZXh0Pjwvc3ZnPg==" alt="CURE International Hospital">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiM0Q0FGNTAiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q0hJPC90ZXh0Pjwvc3ZnPg==" alt="CHI">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q0hTIEFkdmlzb3J5PC90ZXh0Pjwvc3ZnPg==" alt="CHS Advisory">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiNjMTI3MmQiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+WEtlbGV0PC90ZXh0Pjwvc3ZnPg==" alt="XKelet">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QWRkaXMgQWJhYmEgVW5pdmVyc2l0eTwvdGV4dD48L3N2Zz4=" alt="Addis Ababa University">
+                    </div>
+                    
+                    <!-- Duplicate for infinite scroll effect -->
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+U3QuIFBhdWwgSG9zcGl0YWw8L3RleHQ+PC9zdmc+" alt="Saint Paul Hospital">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiNjMTI3MmQiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+TWVRcmV6IEhvc3BpdGFsPC90ZXh0Pjwvc3ZnPg==" alt="MeQrez Hospital">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q1VSRSBJbnRlcm5hdGlvbmFsPC90ZXh0Pjwvc3ZnPg==" alt="CURE International Hospital">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiM0Q0FGNTAiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q0hJPC90ZXh0Pjwvc3ZnPg==" alt="CHI">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+Q0hTIEFkdmlzb3J5PC90ZXh0Pjwvc3ZnPg==" alt="CHS Advisory">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiNjMTI3MmQiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+WEtlbGV0PC90ZXh0Pjwvc3ZnPg==" alt="XKelet">
+                    </div>
+                    <div class="partner">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMDAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCAyMDAgNjAiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0yMCAxMEgxODBWNTBIMjBWMTBaIi8+PHRleHQgZmlsbD0iI2ZmZiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE0IiB4PSI1MCUiIHk9IjUwJSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+QWRkaXMgQWJhYmEgVW5pdmVyc2l0eTwvdGV4dD48L3N2Zz4=" alt="Addis Ababa University">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="section contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11.5c-1.381 0-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5 2.5 1.119 2.5 2.5-1.119 2.5-2.5 2.5zM12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Address</h4>
+                            <p>Addis Ababa, Ethiopia<br>ICS International Community School of Addis Ababa</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Email</h4>
+                            <p>eunchanh325@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        </div>
+                        <div class="contact-text">
+                            <h4>Phone</h4>
+                            <p>+251 90 595 6758</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="form-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <img src="https://pfst.cf2.poecdn.net/base/image/a8b9242659fdeac9558986bc1117c2eff8290d46fbba18654bfada70677ad10d?w=748&h=226" alt="3D CURE - TECH IN HEALTH">
+                    </div>
+                    <p>3D CURE is dedicated to bridging the gap in orthopedic care in Ethiopia and beyond through innovative 3D printing technology, creating custom-fitted orthoses that provide support and stabilization while ensuring comfort and freedom.</p>
+                </div>
+                <div class="footer-links-container">
+                    <h3 class="footer-heading">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#process">Process</a></li>
+                        <li><a href="#team">Team</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact-container">
+                    <h3 class="footer-heading">Contact Info</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 11.5c-1.381 0-2.5-1.119-2.5-2.5s1.119-2.5 2.5-2.5 2.5 1.119 2.5 2.5-1.119 2.5-2.5 2.5zM12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+                            <span>Addis Ababa, Ethiopia</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                            <span>eunchanh325@gmail.com</span>
+                        </li>
+                        <li>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                            <span>+251 90 595 6758</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 3D CURE. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Mobile Menu Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+        
+        // Smooth Scrolling for Internal Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                if (document.querySelector('.nav-links').classList.contains('show')) {
+                    document.querySelector('.nav-links').classList.remove('show');
+                }
+            });
+        });
+        
+        // Dark mode detection
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+        
+        // Add this style for mobile menu
+        const style = document.createElement('style');
+        style.innerHTML = `
+            @media (max-width: 768px) {
+                .nav-links.show {
+                    display: flex;
+                    flex-direction: column;
+                    position: absolute;
+                    top: 70px;
+                    left: 0;
+                    width: 100%;
+                    background-color: white;
+                    padding: 20px;
+                    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+                    z-index: 1000;
+                }
+                
+                .dark .nav-links.show {
+                    background-color: #333;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
