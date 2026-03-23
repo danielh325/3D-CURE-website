@@ -207,6 +207,14 @@ nav {
 
 .hero-image { flex: 1; position: relative; height: 600px; }
 
+.hero-supporting-copy {
+    max-width: 520px;
+    margin: 0 0 12px auto;
+    color: #666;
+    font-size: 0.95rem;
+    text-align: right;
+}
+
 /* Impact Stats */
 .impact-stats {
     margin-top: 50px;
@@ -258,6 +266,34 @@ nav {
     width: 24px;
     height: 24px;
     fill: var(--primary);
+}
+
+.faq {
+    background: linear-gradient(180deg, rgba(193, 39, 45, 0.02), rgba(193, 39, 45, 0.06));
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+}
+
+.faq-card {
+    background: #fff;
+    border-radius: 18px;
+    padding: 28px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(193, 39, 45, 0.08);
+}
+
+.faq-card h3 {
+    margin-bottom: 12px;
+    color: var(--dark);
+}
+
+.faq-card p {
+    margin-bottom: 0;
+    color: #555;
 }
 
 .stat-title {
@@ -1880,6 +1916,23 @@ nav {
 
     .detailed-stat-value {
         font-size: 1.7rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-supporting-copy {
+        margin: 16px 0 0;
+        text-align: left;
+    }
+
+    .faq-card {
+        padding: 22px;
     }
 }
 

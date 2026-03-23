@@ -3,7 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D CURE - Affordable 3D-Printed Prosthetics</title>
+    <title>3D CURE | 3D Printed Prosthetics and Orthoses in Ethiopia</title>
+    <meta name="description" content="3D CURE designs affordable 3D printed prosthetics, orthoses, and custom orthopedic support devices in Addis Ababa, Ethiopia. Learn about our process, team, and contact information.">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="3D CURE">
+    <meta name="theme-color" content="#c1272d">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="3D CURE | 3D Printed Prosthetics and Orthoses in Ethiopia">
+    <meta property="og:description" content="Affordable 3D printed prosthetics and orthoses designed to expand access to orthopedic care in Ethiopia and beyond.">
+    <meta property="og:site_name" content="3D CURE">
+    <meta property="og:image" content="assets/images/logos/logo-light-hq.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="3D CURE | 3D Printed Prosthetics and Orthoses in Ethiopia">
+    <meta name="twitter:description" content="Affordable 3D printed prosthetics and orthoses designed to expand access to orthopedic care in Ethiopia and beyond.">
+    <meta name="twitter:image" content="assets/images/logos/logo-light-hq.png">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/portfolio.css">
@@ -12,8 +25,78 @@
     <script src="https://unpkg.com/three@0.156.0/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.156.0/examples/js/loaders/STLLoader.js"></script>
     <script src="https://unpkg.com/three@0.156.0/examples/js/controls/OrbitControls.js"></script>
-    <script src="https://threejs.org/build/three.min.js"></script> :contentReference[oaicite:0]{index=0}
+    <script src="https://threejs.org/build/three.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Organization",
+                    "name": "3D CURE",
+                    "description": "3D CURE creates affordable 3D printed prosthetics and orthoses to improve access to orthopedic care in Ethiopia and beyond.",
+                    "email": "eunchanh325@gmail.com",
+                    "telephone": "+251905956758",
+                    "sameAs": [
+                        "https://www.linkedin.com/company/3d-cure",
+                        "https://www.instagram.com/3d_cure25/"
+                    ],
+                    "address": {
+                        "@type": "PostalAddress",
+                        "streetAddress": "Mauritania St",
+                        "addressLocality": "Addis Ababa",
+                        "addressCountry": "ET"
+                    },
+                    "contactPoint": {
+                        "@type": "ContactPoint",
+                        "contactType": "customer support",
+                        "telephone": "+251905956758",
+                        "email": "eunchanh325@gmail.com",
+                        "areaServed": [
+                            "ET",
+                            "Africa"
+                        ],
+                        "availableLanguage": [
+                            "en"
+                        ]
+                    }
+                },
+                {
+                    "@type": "WebSite",
+                    "name": "3D CURE"
+                },
+                {
+                    "@type": "FAQPage",
+                    "mainEntity": [
+                        {
+                            "@type": "Question",
+                            "name": "What does 3D CURE do?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "3D CURE designs and produces affordable 3D printed prosthetics, orthoses, and custom orthopedic support devices for patients in Ethiopia and beyond."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "Where is 3D CURE based?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "3D CURE is based in Addis Ababa, Ethiopia, and focuses on expanding access to orthopedic care across Ethiopia and the wider African region."
+                            }
+                        },
+                        {
+                            "@type": "Question",
+                            "name": "How does the 3D CURE process work?",
+                            "acceptedAnswer": {
+                                "@type": "Answer",
+                                "text": "The process starts with 3D scanning, continues with custom design and 3D printing, and ends with fitting, delivery, and follow-up support."
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
 </head>
 
 <body>
@@ -43,16 +126,18 @@
         </div>
     </header>
 
+    <main>
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1>Affordable <br> 3D Printed Prosthetics</h1>
-                    <p>We create custom-fitted orthoses and prosthetics using advanced 3D printing technology, making orthopedic care accessible and affordable in Ethiopia and beyond.</p>
+                    <h1>3D Printed Prosthetics and Orthoses in Ethiopia</h1>
+                    <p>3D CURE creates custom-fitted prosthetics, orthoses, and orthopedic support devices using advanced 3D printing technology, making care more accessible and affordable in Addis Ababa, Ethiopia and beyond.</p>
                     <a href="#contact" class="btn">Contact Us</a>
                     <a href="#about" class="btn btn-secondary">Learn More</a>
                 </div>
                 <div class="hero-image">
+                    <p class="hero-supporting-copy">Affordable orthopedic innovation for patients, clinicians, hospitals, and partners looking for custom 3D printed care solutions.</p>
                     <canvas id="stl-canvas" width="800" height="800"></canvas>
                 </div>
             </div>
@@ -73,10 +158,10 @@
                 </div>
                 <div class="about-image">
                     <div class="arm-container">
-                        <img class="arm" src="assets/images/about/About-hand.png" alt="3D printed arm orthosis">
+                        <img class="arm" src="assets/images/about/About-hand.png" alt="3D printed arm orthosis from 3D CURE in Ethiopia" loading="lazy" decoding="async">
                     </div>
                     <div class="leg-container">
-                        <img class="leg" src="assets/images/about/About-leg.png" alt="3D printed leg orthosis">
+                        <img class="leg" src="assets/images/about/About-leg.png" alt="Custom 3D printed leg orthosis from 3D CURE" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -194,13 +279,13 @@
             </div>
             <div class="process-images">
                 <div class="process-image">
-                    <img src="assets/images/process/Process1.png" alt="3D Scanning Process">
+                    <img src="assets/images/process/Process1.png" alt="3D scanning for a custom orthopedic device" loading="lazy" decoding="async">
                 </div>
                 <div class="process-image">
-                    <img src="assets/images/process/Process2.jpeg" alt="3D Scanning Process">
+                    <img src="assets/images/process/Process2.jpeg" alt="Design and fitting workflow for a 3D printed orthosis" loading="lazy" decoding="async">
                 </div>
                 <div class="process-image">
-                    <img src="assets/images/process/Process3.jpeg" alt="3D Scanning Process"> 
+                    <img src="assets/images/process/Process3.jpeg" alt="3D printed orthopedic support device ready for delivery" loading="lazy" decoding="async"> 
                 </div>
             </div>
         </div>
@@ -216,7 +301,7 @@
                     <div class="left_column1">
                         <div class="profile_image_container1">
                             <div class="profile_image1">
-                                <img src="assets/images/profile/profile_pic.jpeg" alt="Eunchan Hwang">
+                                <img src="assets/images/profile/profile_pic.jpeg" alt="Eunchan Hwang from the 3D CURE team" loading="lazy" decoding="async">
                             </div>
                             <div class="social_icons1">
                                 <a href="https://www.linkedin.com/company/3d-cure" class="social_icon1" target="_blank" rel="noopener noreferrer">
@@ -228,7 +313,7 @@
                             </div>
                         </div>
                         <div class="name_title1">
-                            <h1 class="name1">Eunchan Hwang</h1>
+                            <h3 class="name1">Eunchan Hwang</h3>
                             <h2 class="title1">Student Researcher</h2>
                         </div>
                         <div class="contact_buttons1">
@@ -333,46 +418,69 @@
             <div class="partners-slider">
                 <div class="slider-track">
                     <div class="partner">
-                        <img src="assets/images/partners/images1.png" alt="slider-image">
+                        <img src="assets/images/partners/images1.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async">
                     </div>
                     <div class="partner">
-                        <img src="assets/images/partners/images2.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images2.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images3.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images3.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images4.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images4.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images5.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images5.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images6.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images6.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images7.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images7.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images8.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images8.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images9.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images9.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     
                     <!-- Duplicate for infinite scroll effect -->
                     <div class="partner">
-                        <img src="assets/images/partners/images1.png" alt="slider-image">
+                        <img src="assets/images/partners/images1.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async">
                     </div>
                     <div class="partner">
-                        <img src="assets/images/partners/images2.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images2.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images3.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images3.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images4.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images4.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images5.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images5.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images6.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images6.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images7.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images7.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images8.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images8.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                     <div class="partner">
-                        <img src="assets/images/partners/images9.png" alt="slider-image"></div>
+                        <img src="assets/images/partners/images9.png" alt="3D CURE partner organization logo" loading="lazy" decoding="async"></div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section faq" id="faq">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Answers to common questions about 3D CURE, our 3D printed prosthetics, and custom orthopedic care in Ethiopia.</p>
+            </div>
+            <div class="faq-grid">
+                <article class="faq-card">
+                    <h3>What is 3D CURE?</h3>
+                    <p>3D CURE is a healthcare innovation initiative focused on creating affordable 3D printed prosthetics, orthoses, and orthopedic support devices for patients in Ethiopia and across Africa.</p>
+                </article>
+                <article class="faq-card">
+                    <h3>Who can work with 3D CURE?</h3>
+                    <p>We work with patients, families, clinicians, hospitals, rehabilitation partners, researchers, and organizations looking for accessible orthopedic technology and 3D printing solutions.</p>
+                </article>
+                <article class="faq-card">
+                    <h3>Where is 3D CURE located?</h3>
+                    <p>3D CURE is based in Addis Ababa, Ethiopia, and aims to expand high-quality orthopedic care and 3D printed device access across the region.</p>
+                </article>
             </div>
         </div>
     </section>
@@ -466,6 +574,7 @@
         </div>
     </section>
     
+    </main>
     <footer>
         <div class="container">
             <div class="footer-content">
